@@ -7,6 +7,8 @@ body {
     background: #000 url(bobsbg.png) no-repeat center center fixed;
     background-size: cover;
     overflow: hidden;
+    color: white;
+    font-family: sans-serif;
 }
 canvas {
     top: 0px;
