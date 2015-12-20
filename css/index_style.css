@@ -1,4 +1,5 @@
-html, body{
+html,
+body {
     padding: 0;
     margin: 0;
     width: 100%;
@@ -8,30 +9,25 @@ html, body{
     color: white;
     font-family: sans-serif;
 }
-
-a{
+a {
     text-decoration: none;
 }
-
-h1{
+h1 {
     color: white;
     font-family: sans-serif;
     margin: 0;
     font-size: 80px;
 }
-
-#mid{
+#mid {
     text-align: center;
     padding-top: 20px;
 }
-
-#options{
+#options {
     width: 438px;
     height: 82px;
     margin: auto;
 }
-
-#connectButton{
+#connectButton {
     color: white;
     width: 300px;
     height: 82px;
@@ -42,11 +38,10 @@ h1{
     margin-right: 16px;
     float: left;
 }
-#connectButton:hover{
+#connectButton:hover {
     background: #2ecc71;
 }
-
-#forumButton{
+#forumButton {
     color: white;
     width: 122px;
     height: 82px;
@@ -57,6 +52,6 @@ h1{
     display: inline-block;
     float: left;
 }
-#forumButton:hover{
+#forumButton:hover {
     background: #777;
 }
