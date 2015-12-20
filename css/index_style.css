@@ -1,1 +1,62 @@
+html, body{
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    background: #000 url(bobsbg.png) no-repeat center center fixed;
+    overflow: hidden;
+    color: white;
+    font-family: sans-serif;
+}
 
+a{
+    text-decoration: none;
+}
+
+h1{
+    color: white;
+    font-family: sans-serif;
+    margin: 0;
+    font-size: 80px;
+}
+
+#mid{
+    text-align: center;
+    padding-top: 20px;
+}
+
+#options{
+    width: 438px;
+    height: 82px;
+    margin: auto;
+}
+
+#connectButton{
+    color: white;
+    width: 300px;
+    height: 82px;
+    background: #27ae60;
+    line-height: 82px;
+    font-size: 30px;
+    display: inline-block;
+    margin-right: 16px;
+    float: left;
+}
+#connectButton:hover{
+    background: #2ecc71;
+}
+
+#forumButton{
+    color: white;
+    width: 122px;
+    height: 82px;
+    background: #555;
+    line-height: 82px;
+    margin: auto;
+    font-size: 30px;
+    display: inline-block;
+    float: left;
+}
+#forumButton:hover{
+    background: #777;
+}
