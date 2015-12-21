@@ -13,7 +13,7 @@ if (getCurentFileName() == "index.html" || getCurentFileName() == "") {
 
 /* LOADING
 -----------------*/
-if (getCurentFileName() == "loading.html" || getCurentFileName() == "") {
+if (getCurentFileName() == "loading.html") {
     (function($) {
         var ProgressCircle = function(element, options) {
             var settings = $.extend({}, $.fn.progressCircle.defaults, options);
