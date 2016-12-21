@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Bob's loading page</title>
+
+        <link rel="stylesheet" type="text/css" href="css/loading_style.css" />
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+    </head>
+    
+    <body>
+        <script type="text/javascript" src="js/script.js"></script>
+        <!--<embed id="wtfIframe" width="100%" height="100%" name="plugin" src="http://puu.sh/1AJEA" type="application/x-shockwave-flash">-->
+        <!-- .. -->
+		<div id="left">
+			<p>
+				<div id="logo"></div>
+				<i>Where DarkRP meets Team-Deathmatch</i><br><br>
+				<b>Info</b><br>
+				This server was created back in 2012 to try and get away from stereotypical DarkRP tropes. Players are encouraged to fight enemy factions, get loot, and mod any of the 120+ guns available to their heart's content.<br><br>
+				If this is your first time on this server, a <strong>Server Greeter</strong> will be meeting you on arrival in order to greet you and introduce you to the concept of this server.<br><br>
+				<b>Staff</b><br>
+				<strong>Owner:</strong> Bob Frenchman<br>
+				<strong>WebMaster:</strong> Dexon<br>
+				<strong>S-Admin:</strong> <br>Forte El Torro, Blazing Banana<br>
+				<strong>Admin:</strong> <br>Pyron, Larry, DJ-Red, RoboReptile
+				<br><br><br>
+				<span id="url">http://bob.dexontech.net/forum/</span><br><br>
+			</p>
+		</div>
+		<div id="alert"></div>
+		<div id="right">
+		   
+			<strong>Here are the basic rules.</strong><br> <small>A more detailed version can be found on our MOTD.</small><br><br>
+			
+			1. No prop blocking, pushing, climbing, etc.  (Surfing is tolerated as long as you're a peaceful class)<br>
+			2. No RDM (Random DeathMatch) except for Criminals VS Cops VS Zombies.<br>
+			3. There is no NLR to follow on this server.<br>
+			4. Fading doors obligatory. (Your base must be raidable)<br>
+			5. No spawn camping, blocking, etc.<br>
+			6. Criminals can raid and steal from vendors and other peaceful jobs, but not kill them.<br>
+			7. Do not exploit unfair map areas. (Such as untextured floors on the top of the map)<br>
+			8.  Badass Fists are for fighting and breaking down doors during raids only, do not punch or break props for no reason.<br>
+			9. No mic spamming (Or any general spam for that matter)<br>
+			10.  Don't disrespect other players, act like an ass, or do any kind of griefing in general.<br>
+			11. Any type of hack/script/bot is not allowed.<br>
+			12. Don't make scam trades in the gem market.<br>
+			13. Don't build in the sky or in any other area that is unreachable without propclimbing or surfing.<br>
+			14. Last but not least: Have fun! <br>
+			
+			<div class="jquery-script-clear"></div>
+			<div id="loadingBar">
+			    <div id="mapName">#mapName</div>
+			    <div id="circle"></div>
+			</div>
+			
+		</div>
+		<!--<audio autoplay style="display:hidden;" id="music">
+            <source src="sounds/Fuse_Box.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>-->
+        <script type="text/javascript">
+            ( function( $ ){
+            	$( '#circle' ).progressCircle();
+            
+            	var nPercent        = $( '#percent' ).val() ? $( '#percent' ).val() : 0;
+            	var showPercentText = $( '#percentOn' ).prop( 'checked' );
+            	var thickness       = $( '#thickness' ).val() ? $( '#thickness' ).val() : 2;
+            	var circleSize      = $( '#circle-size' ).val() ? $( '#circle-size' ).val() : 100;
+            
+            	$( '#circle' ).progressCircle({
+            		nPercent        : nPercent,
+            		showPercentText : showPercentText,
+            		thickness       : thickness,
+            		circleSize      : circleSize
+            	});
+            })( jQuery );
+        </script>
+    </body>
+</html>
