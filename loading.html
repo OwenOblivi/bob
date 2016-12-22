@@ -6,162 +6,359 @@
     http://creativecommons.org/licenses/by-nc-sa/4.0/
     http://codepen.io/aai210/pen/oCldL
     -->
-<link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-<style type="text/css">
-    body {
-      font-size: 18px;
-      background-color: rgba(231,76,60,1);
-      height: 100%;
-      margin: 0;
-      overflow: hidden;
-    }
+<head>
+    <meta charset="UTF-8">
+    <title>Bob's loading page</title>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
 
-    h1 {
-      margin: 120px 20px 0 0;
-      color: white;
-      font-size: 42pt;
-      font-family: "Pacifico";
-      text-align: center;
-    }
+    <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <style type="text/css">
+        html,
+        body {
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            background-size: cover;
+            overflow: hidden;
+            color: white;
+            font-family: sans-serif;
+        }
+        canvas {
+            top: 0px;
+            position: absolute;
+            opacity: 0.3;
+        }
+        #logo {
+            width: 370px;
+            height: 87px;
+            background: url(css/logo.png) no-repeat;
+            background-size: 370px 87px;
+            margin: -50px 0 10px -35px;
+        }
+        #url {
+            color: rgb(231,76,60);
+        }
+        #left {
+            height: 100%;
+            width: 300px;
+            background: #191919;
+            border-right: 2px solid rgb(231, 76, 60);
+            box-shadow: 0px 1px 30px rgba(192, 57, 43, 0.05) inset, 0px 0px 80px rgba(231, 76, 60, 0.6);
+            padding: 60px 30px;
+            float: left;
+            margin-right: 30px;
+        }
+        b {
+            font-size: 30px;
+        }
+        h1,
+        h2 {
+            color: white;
+            margin: 0;
+        }
+        h1 {
+            font-size: 80px;
+        }
+        h2 {
+            text-align: right;
+            margin-bottom: 30px;
+        }
+        #right {
+            font-size: 18px;
+            padding: 100px 50px 50px 50px;
+            text-shadow: 0px 0px 10px #000;
+            line-height: 26px;
+        }
+        #loadingBar {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+        }
+        #alert {
+            position: absolute;
+            margin-left: 400px;
+            margin-top: 15px;
+            color: red;
+            font-size: 28px;
+        }
+        #wtfIframe {
+            width: 100%;
+            height: 100%;
+            display: none;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            z-index: 1000;
+        }
+        .prog-circle .slice {
+            position: absolute;
+            width: 1em;
+            height: 1em;
+            clip: rect(0em, 1em, 1em, 0.5em);
+        }
+        .prog-circle .slice.clipauto {
+            clip: rect(auto, auto, auto, auto);
+        }
+        .prog-circle .fill,
+        .prog-circle .bar {
+            position: absolute;
+            border: 0.08em solid rgb(82, 168, 236);
+            width: 0.84em;
+            height: 0.84em;
+            clip: rect(0em, .5em, 1em, 0em);
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            -ms-border-radius: 50%;
+            -o-border-radius: 50%;
+            border-radius: 50%;
+            -webkit-transform: rotate(20deg);
+            -moz-transform: rotate(20deg);
+            -ms-transform: rotate(20deg);
+            -o-transform: rotate(20deg);
+            transform: rotate(20deg);
+            transition: transform 0.5s ease;
+        }
+        .prog-circle {
+            position: relative;
+            font-size: 120px;
+            width: 1em;
+            height: 1em;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            -ms-border-radius: 50%;
+            -o-border-radius: 50%;
+            border-radius: 50%;
+            float: left;
+            margin: 0 0.1em 0.1em 0;
+            background-color: rgba(82, 168, 236, 0.3);
+        }
+        .prog-circle .percenttext {
+            position: absolute;
+            width: 100%;
+            height: 1em;
+            z-index: 1;
+            margin: auto;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            font-size: 0.3em;
+            color: rgb(82, 168, 236);
+            display: block;
+            text-align: center;
+            white-space: nowrap;
+            line-height: 100%;
+            -webkit-transition-duration: 0.2s;
+            -moz-transition-duration: 0.2s;
+            -o-transition-duration: 0.2s;
+            transition-duration: 0.2s;
+            -webkit-transition-timing-function: ease-out;
+            -moz-transition-timing-function: ease-out;
+            -o-transition-timing-function: ease-out;
+            transition-timing-function: ease-out;
+        }
+        .prog-circle .after {
+            position: absolute;
+            top: 0.08em;
+            left: 0.08em;
+            display: block;
+            content: " ";
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            -ms-border-radius: 50%;
+            -o-border-radius: 50%;
+            border-radius: 50%;
+            background-color: #000;
+            width: 0.84em;
+            height: 0.84em;
+        }
+        #circle {
+            margin: 10px;
+        }
+        #submit {
+            cursor: pointer;
+            font-weight: bold;
+            float: right;
+            color: #90c844;
+        }
+    </style>
+    <style type="text/css">
+        body {
+          font-size: 18px;
+          background-color: rgba(231,76,60,1);
+          height: 100%;
+          margin: 0;
+          overflow: hidden;
+        }
 
-    .layer {
-      width: 100%;
-      height: 100%;
-    }
+        h1 {
+          margin: 0;
+          color: white;
+          font-size: 32pt;
+          font-family: "Pacifico";
+          text-align: center;
+          position: absolute;
+          top:10px;
+          right: 10px;
+        }
 
-    ul img {
-      display: block;
-      margin: 0;
-     
-    }
+        .layer {
+          width: 100%;
+          height: 100%;
+        }
 
-    .container {
-      position: absolute;
-      margin: auto;
-      bottom: 0;
-    }
+        ul img {
+          display: block;
+          margin: 0;
+         
+        }
 
-    .scene {
-      padding: 0;
-      margin: 0;
-    }
+        .container {
+          position: absolute;
+          margin: auto;
+          bottom: 0;
+        }
 
-    .giftbox {
-      width: 35px;
-      height: 35px;
-      position: absolute;
-      z-index: 1;
-      cursor: pointer;
-      top: 150px;
-      left: 15px;
-      background-image: url(https://lh4.googleusercontent.com/-tJs9cts4fHQ/VFDreQq-FNI/AAAAAAAADnc/OFB3lXCD5D4/s695-no/snowflake.png);
-      background-size: 100%;
-      display: none;
-    }
+        .scene {
+          padding: 0;
+          margin: 0;
+        }
 
-    .giftbox::after {
-      content: '';
-      position: absolute;
-      color: #fff;
-      width: 100%;
-      font-size: 24px;
-      z-index: 1;
-    }
+        .giftbox {
+          width: 35px;
+          height: 35px;
+          position: absolute;
+          z-index: 1;
+          cursor: pointer;
+          top: 150px;
+          left: 15px;
+          background-image: url(https://lh4.googleusercontent.com/-tJs9cts4fHQ/VFDreQq-FNI/AAAAAAAADnc/OFB3lXCD5D4/s695-no/snowflake.png);
+          background-size: 100%;
+          display: none;
+        }
 
-    #snowfall {
-      z-index: 1;
-      position: absolute;
-    }
+        .giftbox::after {
+          content: '';
+          position: absolute;
+          color: #fff;
+          width: 100%;
+          font-size: 24px;
+          z-index: 1;
+        }
 
-    #im {
-      padding-right: 970px;
-    }
+        #snowfall {
+          z-index: 1;
+          position: absolute;
+        }
 
-    #im1 {
-      padding-left: 970px;
-      position: absolute;
-      z-index: 1;
-    }
+        #im {
+          padding-right: 970px;
+        }
 
-    #im2 {
-      padding-left: 1940px;
-      position: absolute;
-      z-index: 1;
-    }
+        #im1 {
+          padding-left: 970px;
+          position: absolute;
+          z-index: 1;
+        }
 
-    #im3 {
-      padding-left: 2910px;
-      position: absolute;
-      z-index: 1;
-    }
+        #im2 {
+          padding-left: 1940px;
+          position: absolute;
+          z-index: 1;
+        }
 
-    #im4 {
-      padding-left: 3880px;
-      position: absolute;
-      z-index: 1;
-    }
+        #im3 {
+          padding-left: 2910px;
+          position: absolute;
+          z-index: 1;
+        }
 
-    #im5 {
-      padding-left: 4850px;
-      position: absolute;
-      z-index: 1;
-    }
+        #im4 {
+          padding-left: 3880px;
+          position: absolute;
+          z-index: 1;
+        }
 
-    #im6 {
-      padding-left: 5820px;
-      position: absolute;
-      z-index: 1;
-    }
+        #im5 {
+          padding-left: 4850px;
+          position: absolute;
+          z-index: 1;
+        }
 
-    .scene {
-      margin: 185px 0 0 0;
-    }
+        #im6 {
+          padding-left: 5820px;
+          position: absolute;
+          z-index: 1;
+        }
 
-    .can {
-      padding: 1px;
-    }
+        .scene {
+          margin: 185px 0 0 0;
+        }
 
-    .song img {
-      position: absolute;
-      z-index: 1;
-      cursor: pointer;
-      top: 203px;
-      left: 13px;
-    }
+        .can {
+          padding: 1px;
+        }
 
-    @media screen and (max-width: 502px) {
-      
-      .giftbox {
-      top: 20px;
-      left: 20px;
-     }    
-      
-      .song img {
-      top: 20px;
-      left: 62px;
-    }
-      
-    }
+        .song img {
+          position: absolute;
+          z-index: 1;
+          cursor: pointer;
+          top: 203px;
+          left: 13px;
+        }
 
-.anime-bg{
-    opacity: 0.2;
-    position: fixed;
-    left: 0;
-    top: calc(-30%);
-    right: 0;
-    bottom: 0;
-    z-index: -1;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-</style>
-<body>
+        @media screen and (max-width: 502px) {
+          
+          .giftbox {
+          top: 20px;
+          left: 20px;
+         }    
+          
+          .song img {
+          top: 20px;
+          left: 62px;
+        }
+          
+        }
+
+    .anime-bg{
+        opacity: 0.2;
+        position: fixed;
+        left: 0;
+        top: calc(-30%);
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    </style>
+</head>
+
+<body style="background: rgba(231,76,60,0.5);">
     <div class="anime-bg">
         <video poster="http://bob.dexontech.net/intro_cover.jpg" id="video_background" preload="auto" autoplay="autoplay" loop="loop" onended="this.play()" muted>
             <source src="http://bob.dexontech.net/intro.mp4" type="video/mp4">
         </video>
     </div>
-
+    <div id="left" style="z-index: 50; position: relative;">
+        <p>
+            <div id="logo"></div>
+            <i>Where DarkRP meets Team-Deathmatch</i><br><br>
+            <b>Info</b><br>
+            This server was created back in 2012 to try and get away from stereotypical DarkRP tropes. Players are encouraged to fight enemy factions, get loot, and mod any of the 120+ guns available to their heart's content.<br><br>
+            If this is your first time on this server, a <strong>Server Greeter</strong> will be meeting you on arrival in order to greet you and introduce you to the concept of this server.<br><br>
+            <b>Staff</b><br>
+            <strong>Owner:</strong> Bob Frenchman<br>
+            <strong>WebMaster:</strong> Dexon<br>
+            <strong>S-Admin:</strong> <br>Forte El Torro, Blazing Banana<br>
+            <strong>Admin:</strong> <br>Pyron, Larry, DJ-Red, RoboReptile
+            <br><br><br>
+            <span id="url">http://bob.dexontech.net/forum/</span><br><br>
+        </p>
+    </div>
     <header>
         <div class="can"> <canvas id="snowfall"></canvas></div>
     </header>
@@ -171,6 +368,22 @@
     </nav>
     <section>   
         <h1>Bob's TDM RP</h1>
+        <p style="color: #ECF0F1;text-shadow: 1px 1px #000000;position: relative;z-index: 10;"><strong>Here are the basic rules.</strong><br> <small>A more detailed version can be found on our MOTD.</small><br><br>
+            
+            1. No prop blocking, pushing, climbing, etc.  (Surfing is tolerated as long as you're a peaceful class)<br>
+            2. No RDM (Random DeathMatch) except for Criminals VS Cops VS Zombies.<br>
+            3. There is no NLR to follow on this server.<br>
+            4. Fading doors obligatory. (Your base must be raidable)<br>
+            5. No spawn camping, blocking, etc.<br>
+            6. Criminals can raid and steal from vendors and other peaceful jobs, but not kill them.<br>
+            7. Do not exploit unfair map areas. (Such as untextured floors on the top of the map)<br>
+            8.  Badass Fists are for fighting and breaking down doors during raids only, do not punch or break props for no reason.<br>
+            9. No mic spamming (Or any general spam for that matter)<br>
+            10.  Don't disrespect other players, act like an ass, or do any kind of griefing in general.<br>
+            11. Any type of hack/script/bot is not allowed.<br>
+            12. Don't make scam trades in the gem market.<br>
+            13. Don't build in the sky or in any other area that is unreachable without propclimbing or surfing.<br>
+            14. Last but not least: Have fun! <br></p>
         <div id="container" class="container">
             <ul id="scene" class="scene">
                 <li class="layer" id="im"data-depth="1.00"><img src="https://lh6.googleusercontent.com/yPorobiMR-qjKyg8JHJYDiqwwwMO3Z2_VUvCayMyTw=w973-h384-no"></li>
