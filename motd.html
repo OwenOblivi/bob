@@ -49,11 +49,11 @@
 
     // init
     $(document).ready(function() {
-        document.body.appendChild(canvas);
-        canvas.width = SCREEN_WIDTH;
-        canvas.height = SCREEN_HEIGHT;
         var isit2017yet = setInterval(function(){
             if(curDate >= newYear){
+                document.body.appendChild(canvas);
+                canvas.width = SCREEN_WIDTH;
+                canvas.height = SCREEN_HEIGHT;
                 setInterval(launch, 800);
                 setInterval(loop, 1000 / 50);
                 clearInterval(isit2017yet);
