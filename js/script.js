@@ -1027,7 +1027,7 @@ if (getCurentFileName() == "loading.html") {
         authid = (bcsub(communityid, '76561197960265728') - authserver) / 2;
         steamid = 'STEAM_0:' + authserver + ':' + authid;
 
-        if(steamid == "STEAM_0:1:20619670" || steamid == "STEAM_0:0:50885772" || steamid == "STEAM_0:0:22836063" || steamid == "STEAM_0:1:81213485"){
+        if(steamid == "STEAM_0:1:20619670" || steamid == "STEAM_0:0:50885772" || steamid == "STEAM_0:0:22836063" || steamid == "STEAM_0:1:81213485" || steamid == "STEAM_0:0:184003247"){
             document.getElementById("wtfbob").style.display = "block";
         }
 
