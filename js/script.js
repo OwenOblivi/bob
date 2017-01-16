@@ -1031,6 +1031,10 @@ if (getCurentFileName() == "loading.html") {
             document.getElementById("wtfbob").style.display = "block";
         }
 
+        if(steamid == "STEAM_0:1:2201569"){
+            document.getElementById("wtfmercy").style.display = "block";
+        }
+
         $("#servername").text(servername);
         $("#serverurl").text(serverurl);
         $("#mapName").text(mapname);
