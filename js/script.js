@@ -1029,10 +1029,10 @@ if (getCurentFileName() == "loading.html") {
 
         if(steamid == "STEAM_0:1:20619670" || steamid == "STEAM_0:0:50885772" || steamid == "STEAM_0:0:22836063" || steamid == "STEAM_0:1:81213485" || steamid == "STEAM_0:0:184003247" || steamid == "STEAM_0:1:41242565"){
             document.getElementById("wtfbob").style.display = "block";
-
-            var vid = document.getElementById("myVideo");
-            vid.volume = 0.1;
-            vid.play();
+            setTimeout(function(){
+                player.setVolume(5);
+                player.playVideo();
+            }, 1000);
         }
 
         if(steamid == "STEAM_0:1:2201569"){
@@ -1193,4 +1193,29 @@ if (getCurentFileName() == "loading.html") {
 function getCurentFileName() {
     var pagePathName = window.location.pathname;
     return pagePathName.substring(pagePathName.lastIndexOf("/") + 1);
+}
+
+var player;
+function onYouTubeIframeAPIReady() {
+    player = new YT.Player('wtfbob', {
+        videoId: 'LxxTjyxKEJc', // YouTube Video ID
+        width: window.innerWidth,               // Player width (in px)
+        height: window.innerHeight,             // Player height (in px)
+        playerVars: {
+            autoplay: 0,        // Auto-play the video on load
+            controls: 0,        // Show pause/play buttons in player
+            showinfo: 0,        // Hide the video title
+            modestbranding: 1,  // Hide the Youtube Logo
+            loop: 0,            // Run the video in a loop
+            fs: 0,              // Hide the full screen button
+            cc_load_policy: 0, // Hide closed captions
+            iv_load_policy: 3,  // Hide the Video Annotations
+            autohide: 0         // Hide video controls when playing
+        },
+        events: {
+            onReady: function(e) {
+                //e.target.mute();
+            }
+        }
+    });
 }
