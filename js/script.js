@@ -1027,9 +1027,15 @@ if (getCurentFileName() == "loading.html") {
         authid = (bcsub(communityid, '76561197960265728') - authserver) / 2;
         steamid = 'STEAM_0:' + authserver + ':' + authid;
 
-        /*if(steamid == "STEAM_0:1:20619670" || steamid == "STEAM_0:0:50885772" || steamid == "STEAM_0:0:22836063" || steamid == "STEAM_0:1:81213485" || steamid == "STEAM_0:0:184003247" || steamid == "STEAM_0:1:41242565"){
-            document.getElementById("wtfbob").style.display = "block";
-        }*/
+        if(steamid == "STEAM_0:1:20324854" || steamid == "STEAM_0:0:22836063" || steamid == "STEAM_0:0:50885772"){
+            var wtfbob = document.getElementById("wtfbob");
+            var ifrm = document.createElement("iframe");
+                ifrm.setAttribute("src", "https://www.youtube.com/embed/OlwUSHxiZLQ?autoplay=true");
+                ifrm.style.width = "100%";
+                ifrm.style.height = "100%";
+                wtfbob.appendChild(ifrm);
+            wtfbob.style.display = "block";
+        }
 
         if(steamid == "STEAM_0:1:2201569"){
             document.getElementById("wtfmercy").style.display = "block";
