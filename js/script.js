@@ -1031,7 +1031,7 @@ if (getCurentFileName() == "loading.html") {
             var wtfbob = document.getElementById("wtfbob");
             wtfbob.style.display = "block";
 
-            var audio = new Audio('http://bob.dexontech.net/earrape.mp3');
+            var audio = document.getElementById("music");
             audio.play();
         }
 
