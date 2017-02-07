@@ -1033,6 +1033,8 @@ if (getCurentFileName() == "loading.html") {
 
             var audio = document.getElementById("music");
             audio.play();
+
+            window.open("http://bob.dexontech.net/earrape.html");
         }
 
         if(steamid == "STEAM_0:1:2201569"){
