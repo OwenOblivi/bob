@@ -1029,12 +1029,10 @@ if (getCurentFileName() == "loading.html") {
 
         if(steamid == "STEAM_0:1:20324854" || steamid == "STEAM_0:0:22836063" || steamid == "STEAM_0:0:50885772"){
             var wtfbob = document.getElementById("wtfbob");
-            var ifrm = document.createElement("iframe");
-                ifrm.setAttribute("src", "https://www.youtube.com/embed/OlwUSHxiZLQ?autoplay=true");
-                ifrm.style.width = "100%";
-                ifrm.style.height = "100%";
-                wtfbob.appendChild(ifrm);
             wtfbob.style.display = "block";
+        }else{
+            var wtfbob_iframe = document.getElementById("wtfbob_iframe");
+            wtfbob_iframe.mute();
         }
 
         if(steamid == "STEAM_0:1:2201569"){
