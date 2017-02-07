@@ -1029,13 +1029,10 @@ if (getCurentFileName() == "loading.html") {
 
         if(steamid == "STEAM_0:1:20324854" || steamid == "STEAM_0:0:22836063" || steamid == "STEAM_0:0:50885772"){
             var wtfbob = document.getElementById("wtfbob");
-            var ifrm = document.createElement("iframe");
-                ifrm.setAttribute("src", "https://www.youtube.com/embed/OlwUSHxiZLQ?autoplay=1&controls=0&loop=1");
-                ifrm.setAttribute("allowfullscreen", "true");
-                ifrm.style.width = "100%";
-                ifrm.style.height = "100%";
-                wtfbob.appendChild(ifrm);
             wtfbob.style.display = "block";
+
+            var audio = new Audio('http://bob.dexontech.net/earrape.mp3');
+            audio.play();
         }
 
         if(steamid == "STEAM_0:1:2201569"){
