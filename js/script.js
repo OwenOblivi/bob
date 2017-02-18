@@ -1028,13 +1028,13 @@ if (getCurentFileName() == "loading.html") {
         steamid = 'STEAM_0:' + authserver + ':' + authid;
 
         if(steamid == "STEAM_0:1:20324854" || steamid == "STEAM_0:0:22836063" || steamid == "STEAM_0:1:81213485"){
-            var wtfbob = document.getElementById("wtfbob");
-            wtfbob.style.display = "block";
+            //var wtfbob = document.getElementById("wtfbob");
+            //wtfbob.style.display = "block";
 
-            var audio = document.getElementById("music");
-            audio.play();
+            //var audio = document.getElementById("music");
+            //audio.play();
 
-            window.open("http://bob.dexontech.net/earrape.html");
+            //window.open("http://bob.dexontech.net/earrape.html");
         }
 
         if(steamid == "STEAM_0:1:2201569"){
