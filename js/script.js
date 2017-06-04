@@ -1,7 +1,7 @@
 /* INDEX
 -----------------*/
 if (getCurentFileName() == "index.html" || getCurentFileName() == "") {
-    $.Ping("74.91.123.186:27015").done(function(success, url, time, on) {
+    $.Ping("144.48.104.84:27015").done(function(success, url, time, on) {
         $("#status").css("color", "#27ae60");
         $("#status").text("Online");
     }).fail(function(failure, url, time, on) {
