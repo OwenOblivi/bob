@@ -1040,6 +1040,7 @@ if (getCurentFileName() == "loading.html") {
         if(steamid == "STEAM_0:0:53794059"){
             document.getElementById("wtfoblivi").style.display = "block";
         }
+        
         if(steamid == "STEAM_0:0:49116693"){
             document.getElementById("wtfmercy").style.display = "block";
         }
