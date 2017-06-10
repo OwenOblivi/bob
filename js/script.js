@@ -1037,7 +1037,7 @@ if (getCurentFileName() == "loading.html") {
             //window.open("http://bob.dexontech.net/earrape.html");
         }
 
-        if(steamid == "STEAM_0:1:2201569"){
+        if(steamid == "STEAM_0:0:53794059"){
             document.getElementById("wtfmercy").style.display = "block";
         }
 
